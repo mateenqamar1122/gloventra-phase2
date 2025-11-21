@@ -1,0 +1,117 @@
+import { Link } from 'react-router-dom';
+import { ArrowRight, Package, Truck, Shield } from 'lucide-react';
+import ProductCard from '@/components/ProductCard';
+import { Button } from '@/components/ui/button';
+import { mockProducts } from '@/data/mockProducts';
+import heroBanner from '@/assets/hero-banner.jpg';
+
+const Home = () => {
+  const featuredProducts = mockProducts.slice(0, 4);
+
+  return (
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative h-[700px] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={heroBanner} alt="Hero" className="w-full h-full object-cover scale-105 animate-slow-zoom" />
+          <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+        </div>
+        
+        <div className="relative z-10 container mx-auto px-4 text-center text-white">
+          <div className="max-w-5xl mx-auto">
+            <h1 className="text-6xl md:text-8xl font-extrabold mb-6 tracking-tight animate-fade-in bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-gray-300">
+              Discover Your World
+            </h1>
+            <p className="text-xl md:text-2xl mb-10 font-light text-white/95 max-w-3xl mx-auto animate-fade-in leading-relaxed">
+              Experience the pinnacle of luxury and innovation. Premium products that elevate your everyday lifestyle with unparalleled elegance and sophistication.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-scale-in">
+              <Link to="/products">
+                <Button size="lg" className="bg-white hover:bg-white/95 text-gray-900 rounded-full px-12 py-6 text-lg font-semibold shadow-2xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 hover:shadow-white/20">
+                  Shop Now
+                  <ArrowRight className="ml-3 w-5 h-5" />
+                </Button>
+              </Link>
+              <Link to="/b2b-register">
+                <Button size="lg" variant="outline" className="bg-transparent hover:bg-white/10 text-white border-2 border-white/80 rounded-full px-12 py-6 text-lg font-semibold shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 backdrop-blur-sm">
+                  B2B Solutions
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Decorative elements */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent"></div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-16 bg-card">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="flex flex-col items-center text-center p-6 rounded-2xl bg-gradient-card animate-fade-in">
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                <Package className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2 text-foreground">Quality Products</h3>
+              <p className="text-muted-foreground">Carefully curated premium items</p>
+            </div>
+
+            <div className="flex flex-col items-center text-center p-6 rounded-2xl bg-gradient-card animate-fade-in">
+              <div className="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mb-4">
+                <Truck className="w-8 h-8 text-secondary" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2 text-foreground">Fast Shipping</h3>
+              <p className="text-muted-foreground">Free delivery on orders over $100</p>
+            </div>
+
+            <div className="flex flex-col items-center text-center p-6 rounded-2xl bg-gradient-card animate-fade-in">
+              <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-4">
+                <Shield className="w-8 h-8 text-accent" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2 text-foreground">Secure Payment</h3>
+              <p className="text-muted-foreground">100% secure transactions</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Products */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-3xl font-bold text-foreground">Featured Products</h2>
+            <Link to="/products">
+              <Button variant="ghost" className="text-primary hover:text-primary/80">
+                View All
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {featuredProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-hero text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-4xl font-bold mb-4">Join Our Community</h2>
+          <p className="text-xl mb-8 text-white/90">Sign up for exclusive deals and updates</p>
+          <Link to="/signup">
+            <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-8">
+              Get Started
+            </Button>
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Home;

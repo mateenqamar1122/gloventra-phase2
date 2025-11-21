@@ -18,7 +18,8 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-hero rounded-lg"></div>
+            {/* <div className="w-8 h-8 bg-gradient-hero rounded-lg"></div> */}
+            <img src="/brandlogo.png" alt="Gloventra Logo" className="h-8 w-auto" />
             <span className="text-2xl font-bold text-primary">Gloventra</span>
           </Link>
 
